@@ -1,5 +1,10 @@
 # WizzCloud Project Documentation
 
+## Unified repository for the frontend and backend.
+
+- [Backend Repository](https://github.com/VizitiuVitalie/wizz-cloud_be)
+- [Frontend Repository](https://github.com/VizitiuVitalie/wizz-cloud_fe)
+  
 ## Overview
 
 WizzCloud is a cloud-based file storage system designed with a layered architecture following best practices for separation of concerns. The system consists of three core layers: **DTO (Controller Layer)**, **Domain (Service Layer)**, and **Entity (Repository Layer)**. It also integrates with AWS S3 for cloud storage and supports local storage for development environments.
@@ -103,5 +108,3 @@ The project uses **Docker** for containerization and **docker-compose** for serv
 - Enhance frontend UI/UX.
 - Add comprehensive unit and integration tests.
 - Implement role-based access control (RBAC).
-
-
