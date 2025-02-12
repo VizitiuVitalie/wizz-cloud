@@ -1,40 +1,44 @@
 services:
   backend:
     build:
-      context: ./wizz-cloud_be
+      context: ./backend
       dockerfile: Dockerfile
       target: development
     ports:
       - "1222:1222"
     volumes:
-      - ./wizz-cloud_be:/app
+      - ./backend:/app
       - /app/node_modules
-      - ./wizz-cloud_be/cloud_storage:/app/cloud_storage
+      - ./backend/cloud_storage:/app/cloud_storage
     env_file:
       - ./.env
     depends_on:
       - db
     command: npm run start:dev:nodemon
+    container_name: wizzcloud-backend-container
+
 
   frontend:
     build:
-      context: ./wizz-cloud_fe
+      context: ./frontend
       dockerfile: Dockerfile
       target: development
     ports:
       - "3000:3000"
     volumes:
-      - ./wizz-cloud_fe:/app
+      - ./frontend:/app
       - /app/node_modules
     env_file:
       - ./.env
     depends_on:
       - backend
     command: npm run start:dev:nodemon
+    container_name: wizzcloud-frontend-container
+
 
   db:
     image: postgres:13
-    container_name: wizzcloud-db
+    container_name: wizzcloud-database-container
     ports:
       - "5433:5432"
     env_file:
@@ -58,7 +62,7 @@ services:
 
   redis:
     image: redis:latest
-    container_name: wizzcloud-redis
+    container_name: wizzcloud-redis-container
     ports:
       - "6379:6379"
       
